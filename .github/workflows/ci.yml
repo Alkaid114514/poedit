@@ -19,4 +19,10 @@ jobs:
     - name: Restore NuGet packages
       run: nuget restore Poedit.sln
     - name: Build solution
-      run: msbuild Poedit.sln /p:configuration=Debug
+      run: msbuild Poedit.sln /p:configuration=Release
+    - name: Build solution
+      uses: ncipollo/release-action@v1
+      with:
+        allowUpdates: true
+        prerelease: true
+        artifacts: "*.tar.gz"
